@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Thank You for ordering from Jungle!</h1>
+    <p> <%=@order.total_cents%> </p>
+    <% @order.line_items.each do |item| %>
+    <p> <%= item.product %> </p>
+    <p> <%= item.quantity %> </p>
+    <p> <%= item.item_price %> </p>
+    <p> <%= item.total_price %> </p>
+    <% end %>
+  </body>
+</html>
