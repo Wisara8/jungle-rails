@@ -8,21 +8,26 @@ RSpec.describe Product, type: :model do
       @product = Product.new(name: "name", price: 100, quantity: 1, category: @category)
       expect(@product).to be_valid
     end
+
     it "does not save when name is nil" do
       @category = Category.new(name: "name")
       @product = Product.new(name: nil, price: 100, quantity: 1, category: @category)
       expect(@product).to_not be_valid
+      # better: expect that @product.errors.full_messages array contains an error that is bitching about the bad name
     end
+
     it "does not save when price is nil" do
       @category = Category.new(name: "name")
       @product = Product.new(name: "name", price: nil, quantity: 1, category: @category)
       expect(@product).to_not be_valid
     end
+
     it "does not save when quantity is nil" do
       @category = Category.new(name: "name")
       @product = Product.new(name: "name", price: 100, quantity: nil, category: @category)
       expect(@product).to_not be_valid
     end
+
     it "does not save when category is nil" do
       @category = Category.new(name: "name")
       @product = Product.new(name: "name", price: 100, quantity: 1, category: nil)
