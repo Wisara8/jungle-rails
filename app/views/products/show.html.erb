@@ -28,7 +28,8 @@
           <% @product.reviews.each do |review| %>
             <dd><%= review.user.name %> says, </dd>
             <dd><%= review.description %> - <%= review.rating %> out of 5 avacados </dd>
-            <dd><% if @product.reviews.find_by(user_id: current_user.id) %>
+            <dd><% if current_user %>
+            <% @product.reviews.find_by(user_id: current_user.id) %>
               <%= link_to "Delete", product_review_path(@product.id, review.id), 
               {
                 class: 'btn btn-danger',
